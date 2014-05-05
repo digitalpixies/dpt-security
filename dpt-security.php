@@ -3,7 +3,7 @@
 Plugin Name: Wordpress Security by DigitialPixies
 Plugin URI: http://wordpress.digitalpixies.com/dpt-security
 Description: Security Improvements to standard wordpress installs
-Version: 1.0.0
+Version: 1.1.0
 Author: Robert Huie
 Author URI: http://DigitalPixies.com
 License: GPLv2
@@ -16,6 +16,15 @@ if(!class_exists("dpt_security_php")) {
             wp_enqueue_script('jquery');
 			add_action('login_head', 'dpt_security_php::ReformatFormJS');
 			add_filter('wp_authenticate_user', 'dpt_security_php::AuthenticateUser');
+			// we want to run after this one add_filter('authenticate', 'wp_authenticate_username_password', 20, 3);
+			add_filter('authenticate', 'dpt_security_php::RotateModulation', 30, 3);
+		}
+		public static function RotateModulation($user, $username, $password) {
+			if ( is_a($user, 'WP_User') ) { return $user; }
+
+			if (is_wp_error($user) && 'incorrect_password' == $user->get_error_code())
+				dpt_security_php::$data["modulation_value"]=uniqid();
+			return $user;
 		}
 		public static function Initialize() {
 			session_start();
