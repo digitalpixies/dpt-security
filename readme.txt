@@ -3,8 +3,8 @@ Contributors: digitalpixies
 Donate link: http://digitalpixies.com/
 Tags: login, security, authentication
 Requires at least: 3.0.0
-Tested up to: 3.9.0
-Stable tag: 1.1.0
+Tested up to: 4.7.2
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ A plugin or wordpress upgrade has introduced some incomplete javascript into the
 3) Disable or uninstall the plugins impacting this module before re-installing dpt-security plugin.
 
 == Changelog ==
+
+= 1.1.1 =
+* Tested up to current Wordpress 4.7.2
 
 = 1.1 =
 * Rotation of JS modulation value upon password failure
