@@ -3,7 +3,7 @@
 Plugin Name: Wordpress Security by DigitialPixies
 Plugin URI: http://wordpress.digitalpixies.com/dpt-security
 Description: Security Improvements to standard wordpress installs
-Version: 1.1.1
+Version: 1.1.2
 Author: Robert Huie
 Author URI: http://DigitalPixies.com
 License: GPLv2
@@ -47,7 +47,7 @@ if(!class_exists("dpt_security_php")) {
 </script>
 EOF;
 		}
-		public static function AuthenticateUser($username, $password) {
+		public static function AuthenticateUser($username, $password=null) {
 			dpt_security_php::Initialize();
 			if($_REQUEST[dpt_security_php::$data["modulator_name"]]==dpt_security_php::$data["modulation_value"])
 				return $username;
